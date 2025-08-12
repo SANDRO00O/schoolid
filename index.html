@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo-16.png">
+  <link rel="stylesheet" href="assets/css/all.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo-180.png">
+  <meta name="author" content="karrar nazim">
+<meta name="publisher" content="karrar nazim">
+  <title>منشئ هوية التلميذ العراقي</title>
+  <!-- Meta Tags تعريفية -->
+  <meta name="description" content="أنشئ بطاقة هوية مدرسية عراقية لتلميذك بسهولة مجانًا وباللغة العربية. أداة إلكترونية سهلة الاستخدام تدعم إضافة صورة وبيانات التلميذ.">
+  <meta name="keywords" content="هوية, بطاقة, التلميذ, المدرسة, العراق, منشئ هوية, بطاقة مدرسية, تصميم هوية, هوية تلميذ, تلميذ عراقي">
+  <meta name="author" content="كرار ناظم">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="ar">
+  <meta name="theme-color" content="#1F1E1C">
+  
+  <!-- Open Graph Tags لمشاركة أفضل على وسائل التواصل -->
+  <meta property="og:title" content="منشئ هوية التلميذ العراقي">
+  <meta property="og:description" content="أنشئ بطاقة هوية مدرسية عراقية مخصصة لتلميذك بسهولة. أداة مجانية بالكامل.">
+  <meta property="og:image" content="https://schoolcard.netlify.app/assets/images/logo.png"> <!-- عدّل الرابط حسب مكان الصورة -->
+  <meta property="og:url" content="https://schoolcard.netlify.app">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_AR">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="منشئ هوية التلميذ العراقي">
+  <meta name="twitter:description" content="أداة إلكترونية لإنشاء بطاقات الهوية المدرسية العراقية مجانًا وبسهولة.">
+  <meta name="twitter:image" content="https://schoolcard.netlify.app/assets/images/logo.png">
+
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link rel="manifest" href="manifest.json">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "منشئ هوية التلميذ العراقي",
+      "url": "https://schoolcard.netlify.app",
+      "applicationCategory": "EducationApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Person",
+        "name": "كرار ناظم"
+      },
+      "description": "أداة إلكترونية لإنشاء بطاقات الهوية المدرسية العراقية مجانًا وبسهولة.",
+      "inLanguage": "ar"
+    }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8868791430475444" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css?rev=19">
+  
+</head>
+
+
+<body class="body">
+  <header class="header">
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav">
+      <a href="index.html">الرئيسية <i class="fas fa-home"></i></a>
+      <a href="assets/links/About.html">حول الموقع <i class="fas fa-info-circle"></i></a>
+      <a href="assets/links/privacy.html">سياسة الخصوصية <i class="fas fa-user-shield"></i></a>
+      <a href="https://karrarnazim.netlify.app">تواصل معي <i class="fas fa-envelope"></i></a>
+    </nav>
+    <a href="index.html" class="logo">
+      منشئ هوية التلميذ العراقي
+      <img class="mangasr" src="/assets/images/logo.svg" alt="شعار موقع منشئ هوية التلميذ العراقي">
+    </a>
+  </header>
+  <div id="loading" style="display: none;">
+    <div id="container" class="loader"></div>
+  </div>
+  <div class="container">
+
+    <div class="contant">
+      <h1>انشاء بطاقة الهوية المدرسية</h1>
+      <form id="generateForm" enctype="multipart/form-data">
+        <label for="name">
+          <i class="fas fa-user"></i>
+          الأسم الثلاثي:
+        </label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك الثلاثي">
+        
+        <label for="grade">
+          <i class="fas fa-graduation-cap"></i>
+          الصف:
+        </label>
+        <input type="text" id="grade" name="grade" placeholder="أدخل الصف الدراسي">
+        <label for="school">
+          <i class="fas fa-school"></i>
+          المدرسة:
+        </label>
+        <input type="text" id="school" name="school" placeholder="أدخل اسم المدرسة">
+        
+        <label for="place">
+          <i class="fas fa-map-marker-alt"></i>
+          السكن:
+        </label>
+        <input type="text" id="place" name="place" placeholder="أدخل عنوان السكن">
+        <label for="phone">
+          <i class="fas fa-phone"></i>
+          رقم الهاتف:
+        </label>
+        <input type="number" id="phone" name="phone" placeholder="أدخل رقم الهاتف">
+        
+        <div class="gender-buttons">
+          <button type="button" class="gender-btn selected" data-gender="female">
+            <img src="/assets/images/female.svg" alt="ايقونة أنثى"> أنثى
+          </button>
+          <button type="button" class="gender-btn" data-gender="male">
+            <img src="/assets/images/male.svg" alt="ايقونة ذكر"> ذكر
+          </button>
+        </div>
+        
+        <label class="image" for="image">
+          <i class="fas fa-camera"></i>
+          <input type="file" id="image" name="image" accept="image/*" required>
+          اضغط لإضافة صورة للتلميذ/ة
+          <p id="fileName"></p> 
+        </label>
+        
+        <button class="button" type="submit">
+          <i class="fas fa-id-card"></i> انشاء الهوية
+        </button>
+      </form>
+      
+      <canvas id="id-card-canvas" width="1011" height="639"></canvas>
+      <button class="button" id="download-btn" style="display: none;">
+        <i class="fas fa-download"></i>
+        تحميل الهوية
+      </button>
+      
+      <button class="button" id="share-btn" style="display: none;">
+        <i class="fas fa-share"></i>
+        مشاركة
+      </button>
+    </div>
+        <section class="instructions-section container">
+      <div class="contant">
+        <h2><i class="fas fa-info-circle"></i> تعليمات استخدام منشئ الهوية المدرسية</h2>
+        <ul class="instructions-list">
+          <li><strong>املأ جميع الحقول:</strong> تأكد من إدخال الاسم الثلاثي، الصف، اسم المدرسة، عنوان السكن، ورقم الهاتف بشكل صحيح.</li>
+          <li><strong>تحديد الجنس:</strong> اختر الجنس المناسب (ذكر أو أنثى) بالضغط على الزر المقابل.</li>
+          <li><strong>تحميل صورة التلميذ:</strong> اضغط على خانة الصورة واختر صورة واضحة للوجه. يُفضل أن تكون الخلفية بيضاء.</li>
+          <li><strong>إنشاء الهوية:</strong> بعد ملء المعلومات، اضغط على زر <strong>“إنشاء الهوية”</strong> لمعاينة البطاقة.</li>
+          <li><strong>تحميل الهوية:</strong> بمجرد ظهور البطاقة، سيظهر زر التحميل. اضغط عليه لحفظها على جهازك.</li>
+          <li><strong>مشاركة البطاقة:</strong> يمكنك مشاركة الهوية مباشرة عبر الزر المخصص لذلك.</li>
+          <li><strong>دقة الصورة:</strong> للحصول على أفضل نتيجة، استخدم صورة بجودة عالية وأبعاد مربعة تقريبًا.</li>
+          <li><strong>المتصفحات المدعومة:</strong> الموقع يعمل بكفاءة على أحدث إصدارات Chrome وFirefox وEdge.</li>
+          <li><strong>الأمان والخصوصية:</strong> لا يتم حفظ أي بيانات أو صور على السيرفر، كل العمليات تتم في جهازك فقط.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  
+  <footer class="footer">
+    <div class="links">
+      <a href="https://karrarnazim.netlify.app">تواصل معي</a> | 
+      <a href="assets/links/About.html">حول الموقع</a> | 
+      <a href="assets/links/privacy.html">سياسة الخصوصية</a>
+    </div>
+    
+    <p>منشئ هوية التلميذ العراقي 2025 &copy;| جميع الحقوق محفوظة.</p>
+  </footer>
+  
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p><i class="fas fa-exclamation-triangle"></i> الرجاء ملئ جميع الحقول</p>
+    </div>
+  </div>
+  <div id="privacy-popup" class="privacy-popup hidden">
+  <p>يستخدم هذا الموقع ملفات تعريف الارتباط لضمان حصولك على أفضل تجربة. بمتابعتك، فإنك توافق على <a href="assets/links/privacy.html" class="privacy-link">سياسة الخصوصية</a>.</p>
+  <div class="privacy-buttons">
+  <button id="denye-privacy" class="deny-btn">رفض</button>
+  <button id="accept-privacy" class="accept-btn">موافقة</button>
+  </div>
+</div>
+<script>
+  document.getElementById("denye-privacy").addEventListener("click", function() {
+    // إعادة توجيه المستخدم إلى صفحة خارجية، مثلاً Google
+    window.location.href = "https://www.google.com";
+    
+    // أو إذا كنت تريد إغلاق التبويب (لا يعمل دائمًا بسبب قيود المتصفح)
+    // window.close();
+  });
+</script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('privacy-popup');
+    const acceptBtn = document.getElementById('accept-privacy');
+
+    // تحقق هل تم قبول السياسة مسبقًا
+    if (!localStorage.getItem('privacyAccepted')) {
+      popup.classList.remove('hidden');
+    }
+
+    acceptBtn.addEventListener('click', function () {
+      localStorage.setItem('privacyAccepted', 'true');
+      popup.classList.add('hidden');
+    });
+  });
+</script>
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('assets/js/sw.js')
+          .then(reg => console.log('Service Worker registered:', reg))
+          .catch(err => console.error('Service Worker failed:', err));
+      });
+    }
+  </script>
+  <script src="assets/js/header.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('loading');
+      const container = document.getElementById('container');
+      loading.style.display = 'none';
+      container.style.display = 'block';
+    });
+  </script>
+  <script src="assets/js/script.js?version=8"></script>
+  <script src="assets/js/html2canvas.min.js"></script>
+</body>
+
+</html>

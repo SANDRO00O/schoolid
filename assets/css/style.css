@@ -1,0 +1,607 @@
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('/assets/fonts/NotoKufiArabic-VariableFont_wght.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* الإعدادات العامة */
+  --font-family: 'NotoKufiArabic', sans-serif;
+  --scroll-behavior: smooth;
+  
+  /* الألوان الرئيسية */
+  --bg-color: #000000;
+  --text-color: #fff;
+  --primary-color: #ff4d4d;
+  /* للشعارات وعند hover للروابط وبعض العناصر */
+  --secondary-color: #ccc;
+  /* للروابط والنصوص الثانوية */
+  
+  /* الهيدر */
+  --header-bg: #0D0D0DC7;
+  --header-border: #151515C7;
+  
+  /* الأزرار */
+  --button-bg: #CC0000;
+  --button-hover-bg: #ff1a1a;
+  --android-live-bg: whitesmoke;
+  /* الأحجام والمقاسات */
+  --menu-toggle-span-width: 25px;
+  --menu-toggle-span-height: 3px;
+  --menu-toggle-gap: 4px;
+  --icon-size: 25.89px;
+  /* يُستخدم للأيقونات مثل .ma*/
+  --github-icon-size: 0.925496rem;
+  --app-image-max-width: 400px;
+  --content-max-width: 600px;
+  
+  /* الرسوم المتحركة */
+  --animation-slideDown: 0.6s;
+  --animation-fadeIn: 0.4s;
+  --animation-landing-page: 1s;
+  
+  /* الهوامش والبادينج */
+  --header-padding: 1rem 2rem;
+  --landing-page-gap: 3rem;
+  --features-section-padding: 4rem 2rem;
+  --popup-dimensions: 50%;
+  --popup-height: 50px;
+  --popup-margin-bottom: 20px;
+  --footer-padding: 1rem;
+  
+  /* زر التحميل*/
+  --button-width: 90%;
+  --button-radius: 8px;
+  --top-bg: #CC0000;
+  --bottom-bg: #000000;
+  --icon-size: 32px;
+  --badge-font-size: 0.7rem;
+  --badge-padding: 2px 6px;
+  --badge-border-radius: 4px;
+  --top-height: 45px;
+  --bottom-height: 60px;
+  --bottom-font-size: 16px;
+  --bottom-padding: 0px 0;
+  
+  --color-box: #BCB3A4;
+  --color-two: #1F1E1C;
+  --color: #EAE2D7;
+  --color-body: #EAE2D7;
+  --font-family: "manga", sans-serif;
+  --color-button: #1F1E1C;
+}
+
+
+.privacy {
+  color: #f0f0f0;
+}
+
+* {
+  font-family: 'NotoKufiArabic', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  transition: all .3s ease;
+  color: aliceblue;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-size: 18px;
+}
+
+header {
+  background-color: var(--color-two);
+  border-bottom: 2px solid var(--header-border);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown var(--animation-slideDown) ease;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color);
+  text-decoration: none;
+}
+
+.mangasr {
+  height: var(--icon-size);
+  width: var(--icon-size);
+  vertical-align: middle;
+  margin-top: -0.1em;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: var(--menu-toggle-gap);
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle span {
+  width: var(--menu-toggle-span-width);
+  height: var(--menu-toggle-span-height);
+  background: var(--color);
+  transition: all 0.2s ease-in-out;
+  border-radius: 2px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+nav {
+  text-align: center;
+  display: flex;
+  gap: 1rem;
+  transition: all 0.4s ease;
+}
+
+nav a {
+  color: var(--color);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.3s;
+  font-size: 1rem;
+}
+
+.header a i {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  nav a:hover {
+    color: wheat;
+    transform: scale(1.01);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .header a i {
+    opacity: 1;
+    text-align: right;
+  }
+  
+  nav {
+    padding: 1rem;
+    flex-direction: column;
+    background-color: var(--color-two);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-bottom: 2px solid whitesmoke;
+    text-align: right;
+    gap: 7px;
+    transition: 0.2s ease;
+  }
+  
+  nav a {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    transition: 0.2s ease !important;
+  }
+  
+  nav a:active {
+    color: black !important;
+    border-left: 2px solid wheat;
+    background-color: var(--color) !important;
+  }
+  
+  nav.active {
+    display: flex;
+    /* عند تفعيل الـ active، يظهر العنصر */
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn2 .2s ease-in-out;
+  }
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  
+  100% {
+    height: 200px;
+    /* أو الارتفاع المناسب لقائمة البرجر */
+  }
+}
+
+
+.container {
+  gap: 10px;
+  padding: 0.8rem;
+}
+
+.contant {
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  max-width: 768px;
+  margin: 1rem auto;
+  padding: 1rem 0.8rem 1rem 0.8rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  border: 3px solid var(--color-two);
+  background: whitesmoke;
+  
+}
+
+.instructions-section {
+  height: 100%;
+  padding: 0;
+}
+
+
+h1 {
+  font-size: 1.5em;
+  color: var(--color-two);
+  margin-bottom: 20px;
+}
+
+
+
+form label {
+  display: block;
+  margin: 10px 10px 5px 0;
+  font-size: 1rem;
+  text-align: right;
+  direction: rtl;
+  color: var(--color-two);
+}
+
+.modal {
+  transition: .3s ease;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  transition: .3s ease;
+  background-color: #000000;
+  margin: 6.5rem auto;
+  padding: 20px;
+  border: 2px solid whitesmoke;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.close {
+  transition: .3s ease;
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+#phone {
+  direction: ltr;
+}
+
+form input {
+  outline: none;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: whitesmoke;
+  border: 3px solid var(--color-two);
+  color: var(--color-two);
+  transition: 0.3s ease;
+}
+
+form input:focus {
+  background: whitesmoke;
+  color: var(--color-two);
+}
+
+input::placeholder {
+  color: #999;
+  /* لون النص */
+  font-size: 0.8rem;
+  /* حجم الخط */
+  opacity: 1;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  text-align: right;
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  
+}
+
+.gender-btn {
+  background-color: whitesmoke;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 3px solid var(--color-two);
+  color: var(--color-two);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.gender-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+.gender-btn.selected {
+  background: var(--color-two);
+  color: var(--color);
+}
+
+
+.gender-btn.selected img {
+  filter: brightness(0) invert(1);
+  /* يجعل الأيقونة بيضاء */
+}
+
+.gender-btn.selected svg path {
+  fill: #EAE2D7;
+}
+
+.button {
+  font-weight: bold;
+  background-color: var(--color-two);
+  color: var(--color);
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 25px;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+form .button:active {
+  background-color: rgba(12, 12, 12, 1);
+  transform: scale(1.01);
+}
+
+
+
+
+canvas {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid var(--color-two);
+  border-radius: 1rem;
+}
+
+#image {
+  display: none;
+}
+
+.image {
+  margin: auto;
+  text-align: center;
+  direction: rtl;
+  width: 100%;
+  margin-top: 20px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--color-two);
+  color: var(--color);
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.instructions-section h2 {
+  font-size: 1.3rem;
+  color: var(--color-two);
+  margin-bottom: 20px;
+}
+
+.instructions-section ul {
+  list-style-type: none;
+}
+
+.instructions-section li {
+  color: var(--color-two);
+  text-align: right;
+  font-size: calc(1.3rem / 1.618);
+}
+
+footer {
+  background-color: whitesmoke;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+  border: 3px solid #000;
+  border-left: none;
+  border-right: none;
+  color: black;
+  transition: .2s ease-in-out;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+footer p,
+footer h1 {
+  font-size: 0.5rem;
+}
+
+footer p {
+  direction: rtl !important;
+  
+}
+
+.attribution {
+  direction: ltr;
+  font-weight: bolder;
+  color: black;
+}
+
+.attribution a {
+  color: black;
+  border-radius: 0.7rem;
+  text-align: center;
+  transition: .2s ease-in-out;
+  
+}
+
+.attribution a:hover {
+  background-color: #0F0E0B47;
+}
+
+
+
+.attribution i.fa-heart {
+  color: red;
+  
+}
+
+.attribution i.fa-code {
+  color: black;
+  
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+.links a {
+  color: black;
+  
+}
+
+.footer a:hover {
+  color: #B23030;
+  
+}
+
+.footer a {
+  border-radius: 0.7rem;
+  transition: .2s ease-in-out;
+  text-align: center;
+  padding: 2px;
+}
+
+.privacy-popup {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: wheat;
+  color: #000000;
+  border-top: 2px solid #000000;
+  padding: 1rem;
+  z-index: 10000;
+  width: 100%;
+  text-align: center;
+  font-size: 0.95rem;
+  animation: fadeIn2 0.3s ease-in-out;
+}
+
+.privacy-popup p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.privacy-link {
+  color: #0000CC;
+  text-decoration: underline;
+}
+
+.privacy-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.accept-btn,
+.deny-btn {
+  background-color: black;
+  color: wheat;
+  width: 10rem;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--button-radius);
+  border: 2px solid black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accept-btn:active,
+.deny-btn:active {
+  background-color: whitesmoke;
+  border: 2px solid #000000;
+  color: #000;
+}
+
+.hidden {
+  display: none;
+}

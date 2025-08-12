@@ -1,0 +1,22 @@
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" >
+  <!-- كارت خارجي -->
+  <rect x="10" y="20" width="200" height="180" rx="12" ry="12"
+        fill="none" stroke="#EAE2D7" stroke-width="4"/>
+  
+  <!-- الرأس -->
+  <circle cx="110" cy="80" r="25" fill="#EAE2D7"/>
+  
+  <!-- الجسم (مرفوع قليلاً) -->
+  <path d="
+    M 80 120
+    Q 110 100, 140 120
+    Q 145 150, 75 150
+    Q 80 140, 80 120
+    Z
+  " fill="#EAE2D7"/>
+  
+  <!-- خطوط تمثل معلومات -->
+  <line x1="40" y1="165" x2="180" y2="165" stroke="#EAE2D7" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="180" x2="120" y2="180" stroke="#EAE2D7" stroke-width="3" stroke-linecap="round"/>
+  
+</svg>
