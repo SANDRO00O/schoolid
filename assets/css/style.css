@@ -462,12 +462,14 @@ canvas {
 
 .instructions-section ul {
   list-style-type: none;
+  padding: 0 8px;
 }
 
 .instructions-section li {
   color: var(--color-two);
   text-align: right;
   font-size: calc(1.3rem / 1.618);
+  margin-top: 1rem;
 }
 
 /* ======= Footer ======= */
