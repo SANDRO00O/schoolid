@@ -45,7 +45,7 @@
     <div id="container" class="loader"></div>
   </div>
   <div class="container">
-
+    
     <div class="contant">
       <h1>انشاء بطاقة الهوية المدرسية</h1>
       <form id="generateForm" enctype="multipart/form-data">
@@ -90,7 +90,7 @@
           <i class="fas fa-camera"></i>
           <input type="file" id="image" name="image" accept="image/*" required>
           اضغط لإضافة صورة للتلميذ/ة
-          <p id="fileName"></p> 
+          <p id="fileName"></p>
         </label>
         
         <button class="button" type="submit">
@@ -109,7 +109,7 @@
         مشاركة
       </button>
     </div>
-
+    
     <section class="instructions-section container">
       <div class="contant">
         <h2><i class="fas fa-info-circle"></i> تعليمات استخدام منشئ الهوية المدرسية</h2>
@@ -126,7 +126,7 @@
         </ul>
       </div>
     </section>
-
+    
     <!-- ====== قسم الأسئلة الشائعة (تم تحديثه مع إصلاح الارتفاع) ====== -->
     <section id="faq" class="faq-section container" aria-labelledby="faq-heading">
       <div class="contant">
@@ -208,175 +208,178 @@
       </div>
     </section>
     <!-- ====== نهاية الأسئلة الشائعة ====== -->
+  </div>
+  
+  <footer class="footer">
+    <div id="wcb" class="carbonbadge wcb-d"></div>
+    <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+    <div class="links">
+      <a href="https://karrarnazim.space">تواصل معي</a> |
+      <a href="assets/links/About.html">حول الموقع</a> |
+      <a href="assets/links/privacy.html">سياسة الخصوصية</a>
     </div>
     
-    <footer class="footer">
-      <div class="links">
-        <a href="https://karrarnazim.space">تواصل معي</a> |
-        <a href="assets/links/About.html">حول الموقع</a> |
-        <a href="assets/links/privacy.html">سياسة الخصوصية</a>
-      </div>
+    <p>منشئ هوية التلميذ العراقي 2025 &copy;| جميع الحقوق محفوظة.</p>
+  </footer>
+  
+  
+  
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/sw.js"></script>
+  <script src="assets/js/html2canvas.min.js"></script>
+  
+  
+  
+  <!-- سكربت محسن لإدارة الـ FAQ مع حل مشكلة ارتفاع النص -->
+  <script>
+    (function() {
+      const faqButtons = Array.from(document.querySelectorAll('.faq-question'));
       
-      <p>منشئ هوية التلميذ العراقي 2025 &copy;| جميع الحقوق محفوظة.</p>
-    </footer>
-    
-    
-    
-      <script src="assets/js/header.js"></script>
-      <script src="assets/js/script.js"></script>
-      <script src="assets/js/sw.js"></script>
-      <script src="assets/js/html2canvas.min.js"></script>
-
-
-    
-    <!-- سكربت محسن لإدارة الـ FAQ مع حل مشكلة ارتفاع النص -->
-    <script>
-      (function() {
-        const faqButtons = Array.from(document.querySelectorAll('.faq-question'));
+      // مساعدة: ضبط الحالة الابتدائية لجميع الألواح
+      document.querySelectorAll('.faq-answer').forEach(panel => {
+        panel.style.maxHeight = null; // ابدأ مغلقاً
+        panel.setAttribute('aria-hidden', 'true');
+      });
+      
+      // دالة فتح العنصر (مع جعل max-height none بعد انتهاء التحريك)
+      function openPanel(btn, panel) {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
         
-        // مساعدة: ضبط الحالة الابتدائية لجميع الألواح
-        document.querySelectorAll('.faq-answer').forEach(panel => {
-          panel.style.maxHeight = null; // ابدأ مغلقاً
-          panel.setAttribute('aria-hidden', 'true');
+        // ضع ارتفاع البداية (صفحة قد تكون مفتوحة مسبقاً)
+        // حصر: إذا كانت القيمة currently 'none' فهذا يعني أنها مرنة - نريد قيمة رقمية للانتقال
+        // لذلك نستعمل scrollHeight كقيمة البداية
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        
+        // بعد انتهاء الانتقال: اجعل maxHeight مرن (none) ليقبل أي تغيير لاحق في المحتوى بدون قص
+        const onOpenTransitionEnd = function(e) {
+          if (e.propertyName === 'max-height') {
+            // نضع none للسماح بتغيّر الارتفاع دون قص (هذا يمنع مشكلة الخط الذي يحمل لاحقًا)
+            panel.style.maxHeight = 'none';
+            panel.removeEventListener('transitionend', onOpenTransitionEnd);
+          }
+        };
+        panel.addEventListener('transitionend', onOpenTransitionEnd);
+        
+        btn.classList.add('open');
+      }
+      
+      // دالة إغلاق العنصر (نحتاج بداية رقمية ثم نتحول لـ 0)
+      function closePanel(btn, panel) {
+        btn.setAttribute('aria-expanded', 'false');
+        
+        // إذا كانت maxHeight حالياً 'none' (مرنة) — نحتاج تحويلها لقيمة رقمية مساوية للارتفاع الفعلي
+        // نستخدم getBoundingClientRect()/scrollHeight لحساب القيمة الحالية
+        const currentHeight = panel.getBoundingClientRect().height;
+        // ضع القيمة الحالية كنقطة بداية للانتقال
+        panel.style.maxHeight = currentHeight + 'px';
+        
+        // في الإطار التالي نختزلها إلى صفر لعمل الانتقال
+        requestAnimationFrame(() => {
+          panel.style.maxHeight = '0px';
         });
         
-        // دالة فتح العنصر (مع جعل max-height none بعد انتهاء التحريك)
-        function openPanel(btn, panel) {
-          btn.setAttribute('aria-expanded', 'true');
-          panel.setAttribute('aria-hidden', 'false');
-          
-          // ضع ارتفاع البداية (صفحة قد تكون مفتوحة مسبقاً)
-          // حصر: إذا كانت القيمة currently 'none' فهذا يعني أنها مرنة - نريد قيمة رقمية للانتقال
-          // لذلك نستعمل scrollHeight كقيمة البداية
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-          
-          // بعد انتهاء الانتقال: اجعل maxHeight مرن (none) ليقبل أي تغيير لاحق في المحتوى بدون قص
-          const onOpenTransitionEnd = function(e) {
-            if (e.propertyName === 'max-height') {
-              // نضع none للسماح بتغيّر الارتفاع دون قص (هذا يمنع مشكلة الخط الذي يحمل لاحقًا)
-              panel.style.maxHeight = 'none';
-              panel.removeEventListener('transitionend', onOpenTransitionEnd);
-            }
-          };
-          panel.addEventListener('transitionend', onOpenTransitionEnd);
-          
-          btn.classList.add('open');
-        }
+        const onCloseTransitionEnd = function(e) {
+          if (e.propertyName === 'max-height') {
+            panel.setAttribute('aria-hidden', 'true');
+            // تنظيف: إزالة قيمة maxHeight لترك CSS يتحكم بداية من جديد
+            panel.style.maxHeight = null;
+            panel.removeEventListener('transitionend', onCloseTransitionEnd);
+          }
+        };
+        panel.addEventListener('transitionend', onCloseTransitionEnd);
         
-        // دالة إغلاق العنصر (نحتاج بداية رقمية ثم نتحول لـ 0)
-        function closePanel(btn, panel) {
-          btn.setAttribute('aria-expanded', 'false');
-          
-          // إذا كانت maxHeight حالياً 'none' (مرنة) — نحتاج تحويلها لقيمة رقمية مساوية للارتفاع الفعلي
-          // نستخدم getBoundingClientRect()/scrollHeight لحساب القيمة الحالية
-          const currentHeight = panel.getBoundingClientRect().height;
-          // ضع القيمة الحالية كنقطة بداية للانتقال
-          panel.style.maxHeight = currentHeight + 'px';
-          
-          // في الإطار التالي نختزلها إلى صفر لعمل الانتقال
-          requestAnimationFrame(() => {
-            panel.style.maxHeight = '0px';
-          });
-          
-          const onCloseTransitionEnd = function(e) {
-            if (e.propertyName === 'max-height') {
-              panel.setAttribute('aria-hidden', 'true');
-              // تنظيف: إزالة قيمة maxHeight لترك CSS يتحكم بداية من جديد
-              panel.style.maxHeight = null;
-              panel.removeEventListener('transitionend', onCloseTransitionEnd);
-            }
-          };
-          panel.addEventListener('transitionend', onCloseTransitionEnd);
-          
-          btn.classList.remove('open');
-        }
+        btn.classList.remove('open');
+      }
+      
+      // اضف event listeners للأزرار
+      faqButtons.forEach(btn => {
+        const panelId = btn.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        if (!panel) return;
         
-        // اضف event listeners للأزرار
-        faqButtons.forEach(btn => {
-          const panelId = btn.getAttribute('aria-controls');
-          const panel = document.getElementById(panelId);
-          if (!panel) return;
-          
-          // بدءًا من هنا نريد سلوك toggle
-          btn.addEventListener('click', function() {
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            if (expanded) {
-              closePanel(this, panel);
-            } else {
-               document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(openBtn => {
-                 if (openBtn !== this) {
-                   const otherPanel = document.getElementById(openBtn.getAttribute('aria-controls'));
-                   closePanel(openBtn, otherPanel);
-                 }
-               });
-              openPanel(this, panel);
-            }
-          });
-          
-          // دعم لوحة المفاتيح
-          btn.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              this.click();
-            }
-          });
-          
-          // ResizeObserver: اذا تغير محتوى اللوحة اثناء كونها مفتوحة ونلمس ارتفاعاً جديداً
-          if ('ResizeObserver' in window) {
-            const ro = new ResizeObserver(() => {
-              // إذا كانت اللوحة مفتوحة حالياً
-              if (btn.getAttribute('aria-expanded') === 'true') {
-                // إذا كانت maxHeight = 'none' فلا حاجة لتعديل (ستتكيف تلقائياً).
-                // لكن إذا كانت قيمة رقمية (مثلاً أثناء عملية الإغلاق) نحدثها لتجنب قطع المحتوى
-                if (panel.style.maxHeight && panel.style.maxHeight !== 'none') {
-                  // ضع ارتفاع جديد مطابقاً للـ scrollHeight
-                  panel.style.maxHeight = panel.scrollHeight + 'px';
-                }
+        // بدءًا من هنا نريد سلوك toggle
+        btn.addEventListener('click', function() {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            closePanel(this, panel);
+          } else {
+            document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(openBtn => {
+              if (openBtn !== this) {
+                const otherPanel = document.getElementById(openBtn.getAttribute('aria-controls'));
+                closePanel(openBtn, otherPanel);
               }
             });
-            ro.observe(panel);
+            openPanel(this, panel);
           }
         });
         
-        // عندما تنتهي خطوط الويب من التحميل، إذا كان هناك ألواح مفتوحة برمجياً ضمن حالة رقمية -> نجدد ارتفاعها
-        if (document.fonts && typeof document.fonts.ready !== 'undefined') {
-          document.fonts.ready.then(() => {
-            document.querySelectorAll('.faq-answer').forEach(panel => {
-              const prevBtn = panel.previousElementSibling && panel.previousElementSibling.querySelector('.faq-question');
-              if (prevBtn && prevBtn.getAttribute('aria-expanded') === 'true') {
-                // إذا كانت قيمة maxHeight رقمية (ليست none) حدّثها
-                if (panel.style.maxHeight && panel.style.maxHeight !== 'none') {
-                  panel.style.maxHeight = panel.scrollHeight + 'px';
-                }
-              }
-            });
-          }).catch(() => { /* لا نفعل شيئاً إذا فشل */ });
-        }
+        // دعم لوحة المفاتيح
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
         
-        // تأكد من أن عناصر كانت مفتوحة سابقاً (مثلاً من حفظ حالة) تعرض بشكل صحيح عند التحميل
-        window.addEventListener('load', () => {
+        // ResizeObserver: اذا تغير محتوى اللوحة اثناء كونها مفتوحة ونلمس ارتفاعاً جديداً
+        if ('ResizeObserver' in window) {
+          const ro = new ResizeObserver(() => {
+            // إذا كانت اللوحة مفتوحة حالياً
+            if (btn.getAttribute('aria-expanded') === 'true') {
+              // إذا كانت maxHeight = 'none' فلا حاجة لتعديل (ستتكيف تلقائياً).
+              // لكن إذا كانت قيمة رقمية (مثلاً أثناء عملية الإغلاق) نحدثها لتجنب قطع المحتوى
+              if (panel.style.maxHeight && panel.style.maxHeight !== 'none') {
+                // ضع ارتفاع جديد مطابقاً للـ scrollHeight
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+              }
+            }
+          });
+          ro.observe(panel);
+        }
+      });
+      
+      // عندما تنتهي خطوط الويب من التحميل، إذا كان هناك ألواح مفتوحة برمجياً ضمن حالة رقمية -> نجدد ارتفاعها
+      if (document.fonts && typeof document.fonts.ready !== 'undefined') {
+        document.fonts.ready.then(() => {
           document.querySelectorAll('.faq-answer').forEach(panel => {
             const prevBtn = panel.previousElementSibling && panel.previousElementSibling.querySelector('.faq-question');
             if (prevBtn && prevBtn.getAttribute('aria-expanded') === 'true') {
-              // ضع ارتفاعاً و انتظر انتهاء الانتقال ثم حول إلى none
-              panel.style.maxHeight = panel.scrollHeight + 'px';
-              const onOpenTransitionEnd = function(e) {
-                if (e.propertyName === 'max-height') {
-                  panel.style.maxHeight = 'none';
-                  panel.removeEventListener('transitionend', onOpenTransitionEnd);
-                }
-              };
-              panel.addEventListener('transitionend', onOpenTransitionEnd);
-              panel.setAttribute('aria-hidden', 'false');
-            } else {
-              panel.style.maxHeight = null;
-              panel.setAttribute('aria-hidden', 'true');
+              // إذا كانت قيمة maxHeight رقمية (ليست none) حدّثها
+              if (panel.style.maxHeight && panel.style.maxHeight !== 'none') {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+              }
             }
           });
+        }).catch(() => { /* لا نفعل شيئاً إذا فشل */ });
+      }
+      
+      // تأكد من أن عناصر كانت مفتوحة سابقاً (مثلاً من حفظ حالة) تعرض بشكل صحيح عند التحميل
+      window.addEventListener('load', () => {
+        document.querySelectorAll('.faq-answer').forEach(panel => {
+          const prevBtn = panel.previousElementSibling && panel.previousElementSibling.querySelector('.faq-question');
+          if (prevBtn && prevBtn.getAttribute('aria-expanded') === 'true') {
+            // ضع ارتفاعاً و انتظر انتهاء الانتقال ثم حول إلى none
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            const onOpenTransitionEnd = function(e) {
+              if (e.propertyName === 'max-height') {
+                panel.style.maxHeight = 'none';
+                panel.removeEventListener('transitionend', onOpenTransitionEnd);
+              }
+            };
+            panel.addEventListener('transitionend', onOpenTransitionEnd);
+            panel.setAttribute('aria-hidden', 'false');
+          } else {
+            panel.style.maxHeight = null;
+            panel.setAttribute('aria-hidden', 'true');
+          }
         });
-        
-      })();
-    </script>
-
+      });
+      
+    })();
+  </script>
+  
 </body>
+
 </html>
