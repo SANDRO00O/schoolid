@@ -274,7 +274,7 @@
           title: 'بطاقة هوية التلميذ',
           text: 'أنشأت هذه البطاقة باستخدام منشئ هوية التلميذ العراقي.',
           files: [file],
-          url: 'https://schoolcard.netlify.app',
+          url: 'https://schoolcard.space',
         });
       } else {
         alert('المشاركة غير مدعومة على هذا الجهاز. يرجى تحميل الصورة يدويًا.');
