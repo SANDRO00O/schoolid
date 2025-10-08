@@ -55,8 +55,6 @@ A free web tool for creating professional Iraqi school ID cards easily and quick
 - HTML5 Canvas for card generation
 - Vanilla JavaScript
 - CSS3 responsive design
-- Service Workers for offline use
-- Web APIs: Canvas API & Web Share API
 
 ---
 
@@ -77,19 +75,6 @@ cd schoolid
 python -m http.server 8000        # Python
 npx serve .                       # Node.js
 php -S localhost:8000             # PHP
-```
-
-**Usage Example:**
-```javascript
-const studentData = {
-  name: "أحمد محمود عبدالله",
-  grade: "السادس الابتدائي",
-  school: "مدرسة الرشيد الابتدائية", 
-  address: "بغداد - الكرخ",
-  phone: "07701234567",
-  gender: "male",
-  photo: "student-photo.jpg"
-};
 ```
 
 ---
@@ -113,7 +98,8 @@ schoolid/
 │   │   ├── logo.svg
 │   │   ├── male.svg
 │   │   ├── female.svg
-│   │   └── logo-*.png
+│   │   └── logo.png
+│   │   └── ...
 │   ├── template/
 │   │   ├── male-template.png
 │   │   └── female-template.png
@@ -121,9 +107,7 @@ schoolid/
 │       ├── About.html
 │       └── privacy.html
 ├── index.html
-├── README.md
-├── LICENSE
-└── service-worker.js
+└── README.md
 ```
 
 ---
@@ -280,11 +264,10 @@ npx live-server --port=3000
 
 ## 📞 Support & Contact
 
-- 🌐 [Website](https://schoolid.karrarnazim.space)
+- 🌐 [Website](https:/karrarnazim.space)
 - 📧 Email: karrarnazim.space
 - 🐛 [Bug Reports](https://github.com/SANDRO00O/schoolid/issues)
 - 💬 [Discussions](https://github.com/SANDRO00O/schoolid/discussions)
-- 📚 [Wiki](https://github.com/SANDRO00O/schoolid/wiki)
 
 ---
 
@@ -297,6 +280,6 @@ npx live-server --port=3000
 
 ---
 
-Made with 💙 for Iraqi Students | © 2025 Karrar Nazim - All Rights Reserved.
+Made with 💙 Students | © 2025 Karrar Nazim - All Rights Reserved.
 
 ⭐ Star this repo if you find it useful! ⭐
