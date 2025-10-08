@@ -6,42 +6,32 @@
 }
 
 :root {
-  /* الإعدادات العامة */
   --font-family: 'NotoKufiArabic', sans-serif;
   --scroll-behavior: smooth;
   
-  /* الألوان الرئيسية */
   --bg-color: #000000;
   --text-color: #fff;
   --primary-color: #ff4d4d;
-  /* للشعارات وعند hover للروابط وبعض العناصر */
   --secondary-color: #ccc;
-  /* للروابط والنصوص الثانوية */
   
-  /* الهيدر */
   --header-bg: #0D0D0DC7;
   --header-border: #151515C7;
   
-  /* الأزرار */
   --button-bg: #CC0000;
   --button-hover-bg: #ff1a1a;
   --android-live-bg: whitesmoke;
-  /* الأحجام والمقاسات */
   --menu-toggle-span-width: 25px;
   --menu-toggle-span-height: 3px;
   --menu-toggle-gap: 4px;
   --icon-size: 25.89px;
-  /* يُستخدم للأيقونات مثل .ma*/
   --github-icon-size: 0.925496rem;
   --app-image-max-width: 400px;
   --content-max-width: 600px;
   
-  /* الرسوم المتحركة */
   --animation-slideDown: 0.6s;
   --animation-fadeIn: 0.4s;
   --animation-landing-page: 1s;
   
-  /* الهوامش والبادينج */
   --header-padding: 1rem 2rem;
   --landing-page-gap: 3rem;
   --features-section-padding: 4rem 2rem;
@@ -50,7 +40,6 @@
   --popup-margin-bottom: 20px;
   --footer-padding: 1rem;
   
-  /* زر التحميل*/
   --button-width: 90%;
   --button-radius: 8px;
   --top-bg: #CC0000;
@@ -221,7 +210,6 @@ nav a {
   
   nav.active {
     display: flex;
-    /* عند تفعيل الـ active، يظهر العنصر */
     opacity: 1;
     pointer-events: auto;
     animation: fadeIn2 .2s ease-in-out;
@@ -237,7 +225,6 @@ nav a {
   100% {
     opacity: 1;
     transform: scale(1);
-    /* أو الارتفاع المناسب لقائمة البرجر */
   }
 }
 
@@ -353,9 +340,7 @@ form input:focus {
 
 input::placeholder {
   color: #999;
-  /* لون النص */
   font-size: 0.8rem;
-  /* حجم الخط */
   opacity: 1;
   direction: rtl;
   unicode-bidi: plaintext;
@@ -397,7 +382,6 @@ input::placeholder {
 
 .gender-btn.selected img {
   filter: brightness(0) invert(1);
-  /* يجعل الأيقونة بيضاء */
 }
 
 .gender-btn.selected svg path {
@@ -615,7 +599,7 @@ footer p {
   display: none;
 }
 
-/* ================= FAQ Styles (مضافة) ================= */
+/* ================= FAQ Styles ================= */
 .faq-section .contant {
   background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
   border-radius: 14px;
@@ -640,7 +624,6 @@ footer p {
   text-align: right;
 }
 
-/* كل عنصر FAQ */
 .faq-item {
   border: 2px solid rgba(31,30,28,0.06);
   border-radius: 10px;
@@ -648,7 +631,6 @@ footer p {
   background: #fff;
 }
 
-/* الزر (السؤال) */
 .faq-question {
   width: 100%;
   text-align: right;
@@ -666,18 +648,15 @@ footer p {
   direction: rtl;
 }
 
-/* أيقونة السهم */
 .faq-icon {
   transition: transform 0.25s ease;
 }
 
-/* عندما يفتح العنصر */
 .faq-question.open .faq-icon,
 .faq-question[aria-expanded="true"] .faq-icon {
   transform: rotate(180deg);
 }
 
-/* الإجابة */
 .faq-answer {
   padding: 0 16px;
   color: #333;
@@ -690,12 +669,10 @@ footer p {
   text-align: right;
 }
 
-/* عندما تكون مفتوحة - نضيف بعض البادينج العلوي والسفلي */
 .faq-answer[aria-hidden="false"] {
   padding: 12px 16px 18px 16px;
 }
 
-/* تحسين على الجوال */
 @media (max-width: 420px) {
   .faq-question {
     font-size: 0.95rem;
@@ -707,4 +684,3 @@ footer p {
   }
 }
 
-/* نهاية FAQ styles */
